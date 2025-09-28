@@ -21,6 +21,8 @@ export const register = async (req, res) => {
 };
 export const login = async (req, res) => {
   try {
+    console.log("Login controller ejecutado para usuario:", req.user?.username);
+    
     // Registrar métrica de login exitoso
     await MetricsService.recordAuthMetric({
       userId: req.user._id,
@@ -46,12 +48,18 @@ export const login = async (req, res) => {
       { expiresIn: "24h" }
     );
     
-    res.status(200).json({
+    console.log("JWT generado:", jwtToken.substring(0, 20) + "...");
+    
+    const response = {
       message: "User logged in successfully",
       username: req.user.username,
       isMfaActive: req.user.isMfaActive,
       token: jwtToken
-    });
+    };
+    
+    console.log("Enviando respuesta de login:", response);
+    
+    res.status(200).json(response);
   } catch (error) {
     console.error("Error in login:", error);
     res.status(500).json({ message: "Internal server error" });
