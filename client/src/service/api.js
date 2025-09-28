@@ -20,7 +20,10 @@ api.interceptors.request.use(
     (config) => {
         const token = localStorage.getItem('authToken');
         if (token) {
+            console.log('Enviando token en request:', token.substring(0, 20) + '...');
             config.headers.Authorization = `Bearer ${token}`;
+        } else {
+            console.log('No hay token en localStorage para enviar');
         }
         return config;
     },

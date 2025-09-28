@@ -20,7 +20,11 @@ export const loginUser = async (username, password) => {
   
   // Guardar el token en localStorage si viene en la respuesta
   if (response.data.token) {
+    console.log('Token recibido del login:', response.data.token);
     localStorage.setItem('authToken', response.data.token);
+    console.log('Token guardado en localStorage:', localStorage.getItem('authToken'));
+  } else {
+    console.log('No se recibió token en la respuesta del login');
   }
   
   return response;
