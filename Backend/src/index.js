@@ -6,6 +6,8 @@ import cors from "cors";
 import dbConnect from "./config/dbConnect.js"
 import authRoutes from "./routes/authRoutes.js"
 import metricsRoutes from "./routes/metricsRoutes.js"
+import componentRoutes from "./routes/componentRoutes.js"
+import categoryRoutes from "./routes/categoryRoutes.js"
 import "./config/passportConfig.js"
 
 dotenv.config();
@@ -37,6 +39,8 @@ app.use(passport.session())
 // ROUTES
 app.use("/api/auth", authRoutes)
 app.use("/api/metrics", metricsRoutes)
+app.use("/api/components", componentRoutes)
+app.use("/api/categories", categoryRoutes)
 
 // Listen app
 const PORT = process.env.PORT || 7002;

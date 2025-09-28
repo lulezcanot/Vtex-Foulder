@@ -35,3 +35,15 @@ export const cleanupExpiredSessions = (req, res, next) => {
 
   next();
 };
+
+// Middleware para asegurar que el usuario esté autenticado
+export const ensureAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  
+  res.status(401).json({
+    success: false,
+    message: 'No autorizado. Debes iniciar sesión.'
+  });
+};

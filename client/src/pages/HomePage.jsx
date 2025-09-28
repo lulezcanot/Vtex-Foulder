@@ -32,17 +32,24 @@ const HomePage = () => {
         <h2 className="text-xl font-semibold mb-4">Bienvenido, {user.username}!</h2>
         <p className="mb-6">Ha iniciado sesión correctamente y ha verificado su 2FA</p>
         
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
           <button
             type="button"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition-colors"
+            className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium"
+            onClick={() => navigate('/components')}
+          >
+            Gestionar Componentes
+          </button>
+          <button
+            type="button"
+            className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors font-medium"
             onClick={handleShowMetrics}
           >
             Métricas
           </button>
           <button
             type="button"
-            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition-colors"
+            className="bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-colors font-medium"
             onClick={handleLogout}
           >
             Cerrar sesión

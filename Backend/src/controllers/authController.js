@@ -84,7 +84,7 @@ export const setup2FA = async (req, res) => {
     const url = speakeasy.otpauthURL({
       secret: secret.base32,
       label: `${req.user.username}`,
-      issuer: "www.lulezcanot.com",
+      issuer: "Vtex Foulder",
       encoding: "base32",
     });
     const qrImageUrl = await qrCode.toDataURL(url);

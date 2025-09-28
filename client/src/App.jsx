@@ -2,16 +2,22 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes";
 import "./App.css";
 import { SessionProvider } from "./context/SessionContext";
+import { ToastProvider } from "./context/ToastContext";
+import ToastContainer from "./components/Toast";
+import ErrorBoundary from "./components/ErrorBoundary";
 
 function App() {
   return (
-    <div className="bg-slate-900 h-screen">
-      <div className="flex justify-center items-center h-screen">
-        <SessionProvider>
-          <RouterProvider router={router} />
-        </SessionProvider>
+    <ErrorBoundary>
+      <div className="bg-slate-900 min-h-screen">
+        <ToastProvider>
+          <SessionProvider>
+            <RouterProvider router={router} />
+            <ToastContainer />
+          </SessionProvider>
+        </ToastProvider>
       </div>
-    </div>
+    </ErrorBoundary>
   );
 }
 

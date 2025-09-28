@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { setup2FA } from "../service/authApi";
 
-const TwoFASetup = ({ onSetupComplete }) => {
+const TwoFASetup = ({ onSetupSuccess }) => {
   const [response, setResponse] = useState("");
   const [message, setMessage] = useState("");
 
@@ -20,52 +20,65 @@ const TwoFASetup = ({ onSetupComplete }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md w-full max-w-sm mx-auto">
-      <div className="pt-6">
-        <h2 className="text-3xl text-center font-extralight">
+    <div className="space-y-6">
+      <div className="text-center">
+        <h3 className="text-lg font-semibold text-white mb-2">
           Activar la autenticación Two-Factor
-        </h2>
+        </h3>
+        <p className="text-purple-200 text-sm">
+          Escanee el siguiente código Qr con su aplicación de autenticación
+        </p>
       </div>
-      <hr className="text-gray-200 mt-6 mb-6" />
-      <p className="text-center text-gray-600 text-lg font-light pr-6 pl-6">
-        Escanee el siguiente código Qr con su aplicación de autenticación
-      </p>
-      <div className="p-6">
-        <div className="flex justify-center">
-          {response.qrCode ? (
+
+      {/* QR Code */}
+      <div className="flex justify-center">
+        {response.qrCode ? (
+          <div className="bg-white p-4 rounded-xl shadow-lg">
             <img
               src={response.qrCode}
               alt="2FA QR CODE"
-              className="mb-4 border rounded-md"
+              className="w-48 h-48 object-contain"
             />
-          ) : (
-            ""
-          )}
-        </div>
-        <div className="flex items-center mt-3 mb-3">
-          <div className="border-t border-1 border-gray-200 flex-grow"></div>
-          <div className="text-gray-600 text-sm font-light pr-2 pl-2">
-            QR introducir el código manualmente
           </div>
-          <div className="border-t border-1 border-gray-200 flex-grow"></div>
-        </div>
-        <div className="mb-6">
-          {message && <p className="text-green-600 text-sm mb-3">{message}</p>}
-          <input
-            readOnly
-            defaultValue=""
-            value={response.secret}
-            className="w-full border rounded mt-2 text-xs text-gray-600 p-4"
-            onClick={copyClipBoard}
-          />
-        </div>
-        <button
-          onClick={onSetupComplete}
-          className="w-full bg-blue-500 text-white py-2 rounded-md"
-        >
-          Continuar con la verificación
-        </button>
+        ) : (
+          <div className="bg-white/20 backdrop-blur-sm rounded-xl p-8 flex items-center justify-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+          </div>
+        )}
       </div>
+
+      {/* Manual Code Section */}
+      <div className="space-y-4">
+        <div className="flex items-center">
+          <div className="flex-1 border-t border-white/30"></div>
+          <span className="px-4 text-purple-200 text-sm">
+            QR introducir el código manualmente
+          </span>
+          <div className="flex-1 border-t border-white/30"></div>
+        </div>
+
+        {message && (
+          <div className="bg-green-500/20 border border-green-400/50 rounded-lg p-3">
+            <p className="text-green-200 text-sm text-center">{message}</p>
+          </div>
+        )}
+
+        <input
+          readOnly
+          defaultValue=""
+          value={response.secret}
+          className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white text-center font-mono text-sm cursor-pointer hover:bg-white/30 transition-all duration-200 backdrop-blur-sm"
+          onClick={copyClipBoard}
+        />
+      </div>
+
+      {/* Continue Button */}
+      <button
+        onClick={onSetupSuccess}
+        className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-transparent"
+      >
+        Continuar con la verificación
+      </button>
     </div>
   );
 };
