@@ -7,7 +7,7 @@ export const register = async (username, password) => {
 };
 
 export const loginUser = async (username, password) => {
-  return await api.post(
+  const response = await api.post(
     "/auth/login",
     {
       username,
@@ -17,6 +17,13 @@ export const loginUser = async (username, password) => {
       withCredentials: true,
     }
   );
+  
+  // Guardar el token en localStorage si viene en la respuesta
+  if (response.data.token) {
+    localStorage.setItem('authToken', response.data.token);
+  }
+  
+  return response;
 };
 
 export const authStatus = async () => {
@@ -26,13 +33,18 @@ export const authStatus = async () => {
 };
 
 export const logoutUser = async () => {
-  return await api.post(
+  const response = await api.post(
     "/auth/logout",
     {},
     {
       withCredentials: true,
     }
   );
+  
+  // Limpiar el token del localStorage al hacer logout
+  localStorage.removeItem('authToken');
+  
+  return response;
 };
 
 export const setup2FA = async () => {

@@ -35,10 +35,22 @@ export const login = async (req, res) => {
     // Guardar timestamp de inicio de sesión para calcular tiempo de respuesta total
     req.session.loginStartTime = Date.now();
     
+    // Generar JWT para mantener autenticación
+    const jwtToken = jwt.sign(
+      { 
+        userId: req.user._id,
+        username: req.user.username,
+        isMfaActive: req.user.isMfaActive
+      },
+      process.env.JWT_SECRET,
+      { expiresIn: "24h" }
+    );
+    
     res.status(200).json({
       message: "User logged in successfully",
       username: req.user.username,
       isMfaActive: req.user.isMfaActive,
+      token: jwtToken
     });
   } catch (error) {
     console.error("Error in login:", error);
