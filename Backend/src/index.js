@@ -15,6 +15,9 @@ dbConnect();
 
 const app = express();
 
+// Trust proxy for Railway
+app.set('trust proxy', 1);
+
 // Middlewares
 const corsOptions = {
   origin: [
