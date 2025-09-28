@@ -17,7 +17,11 @@ const app = express();
 
 // Middlewares
 const corsOptions = {
-  origin: ["http://localhost:3001", "http://localhost:3002"],
+  origin: [
+    "http://localhost:3001", 
+    "http://localhost:3002",
+    process.env.FRONTEND_URL || "https://vtex-foulder.vercel.app"
+  ],
   credentials: true 
 };
 app.use(cors(corsOptions));
@@ -30,6 +34,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       maxAge: 60000 * 60,
+      secure: process.env.NODE_ENV === 'production', // HTTPS en producción
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax', // Para dominios cruzados
+      httpOnly: true
     },
   })
 );
