@@ -17,7 +17,11 @@ const app = express();
 
 // Middlewares
 const corsOptions = {
-  origin: ["http://localhost:3001", "http://localhost:3002"],
+  origin: [
+    "http://localhost:3001", 
+    "http://localhost:3002",
+    process.env.FRONTEND_URL || "https://tu-app.netlify.app"
+  ],
   credentials: true 
 };
 app.use(cors(corsOptions));
