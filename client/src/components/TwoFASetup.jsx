@@ -22,18 +22,18 @@ const TwoFASetup = ({ onSetupSuccess }) => {
   return (
     <div className="space-y-6">
       <div className="text-center">
-        <h3 className="text-lg font-semibold text-white mb-2">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">
           Activar la autenticación Two-Factor
         </h3>
-        <p className="text-purple-200 text-sm">
-          Escanee el siguiente código Qr con su aplicación de autenticación
+        <p className="text-gray-600 text-sm">
+          Escanee el siguiente código QR con su aplicación de autenticación
         </p>
       </div>
 
       {/* QR Code */}
       <div className="flex justify-center">
         {response.qrCode ? (
-          <div className="bg-white p-4 rounded-xl shadow-lg">
+          <div className="bg-white border border-gray-200 p-4 rounded-lg shadow-card">
             <img
               src={response.qrCode}
               alt="2FA QR CODE"
@@ -41,8 +41,8 @@ const TwoFASetup = ({ onSetupSuccess }) => {
             />
           </div>
         ) : (
-          <div className="bg-white/20 backdrop-blur-sm rounded-xl p-8 flex items-center justify-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 flex items-center justify-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-800"></div>
           </div>
         )}
       </div>
@@ -50,16 +50,16 @@ const TwoFASetup = ({ onSetupSuccess }) => {
       {/* Manual Code Section */}
       <div className="space-y-4">
         <div className="flex items-center">
-          <div className="flex-1 border-t border-white/30"></div>
-          <span className="px-4 text-purple-200 text-sm">
-            QR introducir el código manualmente
+          <div className="flex-1 border-t border-gray-200"></div>
+          <span className="px-4 text-gray-500 text-sm">
+            O introducir el código manualmente
           </span>
-          <div className="flex-1 border-t border-white/30"></div>
+          <div className="flex-1 border-t border-gray-200"></div>
         </div>
 
         {message && (
-          <div className="bg-green-500/20 border border-green-400/50 rounded-lg p-3">
-            <p className="text-green-200 text-sm text-center">{message}</p>
+          <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+            <p className="text-green-600 text-sm text-center">{message}</p>
           </div>
         )}
 
@@ -67,15 +67,16 @@ const TwoFASetup = ({ onSetupSuccess }) => {
           readOnly
           defaultValue=""
           value={response.secret}
-          className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white text-center font-mono text-sm cursor-pointer hover:bg-white/30 transition-all duration-200 backdrop-blur-sm"
+          className="w-full px-4 py-3 bg-gray-50 border border-gray-300 rounded-lg text-gray-900 text-center font-mono text-sm cursor-pointer hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
           onClick={copyClipBoard}
+          placeholder="Código de configuración manual"
         />
       </div>
 
       {/* Continue Button */}
       <button
         onClick={onSetupSuccess}
-        className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-transparent"
+        className="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 cursor-pointer"
       >
         Continuar con la verificación
       </button>

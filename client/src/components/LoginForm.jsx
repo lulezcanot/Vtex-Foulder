@@ -71,16 +71,16 @@ const LoginForm = ({onLoginSuccess}) => {
 
   return (
     <form onSubmit={isRegister ? handleRegister: handleLogin} className="space-y-6">
-      <div className="space-y-4">
+      <div className="space-y-5">
         <div>
-          <label className="block text-sm font-medium text-white mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Usuario
           </label>
           <input
             value={username}
             type="text"
             onChange={(e) => setUsername(e.target.value)}
-            className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+            className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Ingresa tu usuario"
             required
             disabled={loading}
@@ -88,14 +88,14 @@ const LoginForm = ({onLoginSuccess}) => {
         </div>
         
         <div>
-          <label className="block text-sm font-medium text-white mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Contraseña
           </label>
           <input
             value={password}
             type="password"
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+            className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Ingresa tu contraseña"
             required
             disabled={loading}
@@ -104,14 +104,14 @@ const LoginForm = ({onLoginSuccess}) => {
 
         {isRegister && (
           <div>
-            <label className="block text-sm font-medium text-white mb-2">
+            <label className="block text-sm font-medium text-gray-700 mb-2">
               Confirmar Contraseña
             </label>
             <input
               value={confirmPassword}
               type="password"
               onChange={(e) => setConfirmPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+              className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
               placeholder="Confirma tu contraseña"
               required
               disabled={loading}
@@ -121,21 +121,21 @@ const LoginForm = ({onLoginSuccess}) => {
       </div>
 
       {error && (
-        <div className="bg-red-500/20 border border-red-400/50 rounded-lg p-3">
-          <p className="text-red-200 text-sm text-center">{error}</p>
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+          <p className="text-red-600 text-sm text-center">{error}</p>
         </div>
       )}
       
       {message && (
-        <div className="bg-green-500/20 border border-green-400/50 rounded-lg p-3">
-          <p className="text-green-200 text-sm text-center">{message}</p>
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+          <p className="text-green-600 text-sm text-center">{message}</p>
         </div>
       )}
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-transparent disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        className="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
       >
         {loading ? (
           <div className="flex items-center justify-center space-x-2">
@@ -148,17 +148,17 @@ const LoginForm = ({onLoginSuccess}) => {
       </button>
 
       <div className="text-center">
-        <p className="text-purple-200 text-sm">
+        <p className="text-gray-600 text-sm">
           {isRegister 
             ? "¿Ya tienes una cuenta? "
             : "¿No tienes una cuenta? "}
           <button
             type="button"
             onClick={handleRegisterToggle}
-            className="text-white font-semibold hover:text-purple-200 transition-colors duration-200 underline underline-offset-2"
+            className="text-primary-600 font-medium hover:text-primary-700 underline underline-offset-2 cursor-pointer"
             disabled={loading}
           >
-            {isRegister ? "Iniciar Sesión" : "Crear Cuenta"}
+            {isRegister ? "Iniciar Sesión" : "Crear cuenta"}
           </button>
         </p>
       </div>

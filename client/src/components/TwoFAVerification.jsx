@@ -28,17 +28,17 @@ const TwoFAVerification = ({onVerificationSuccess, onResetSuccess}) => {
   return (
     <form onSubmit={handleTokenVerification} className="space-y-6">
       <div className="text-center">
-        <h3 className="text-lg font-semibold text-white mb-2">
+        <h3 className="text-lg font-semibold text-gray-900 mb-2">
           Validar TOTP
         </h3>
-        <p className="text-purple-200 text-sm">
+        <p className="text-gray-600 text-sm">
           Por favor, introduzca 6 dígitos OTP basado en tiempo para verificar la autenticación 2FA
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-5">
         <div>
-          <label className="block text-sm font-medium text-white mb-2">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             TOTP
           </label>
           <input
@@ -46,28 +46,28 @@ const TwoFAVerification = ({onVerificationSuccess, onResetSuccess}) => {
             value={otp}
             type="text"
             onChange={(e) => setOtp(e.target.value)}
-            className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+            className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             placeholder="Introduzca su TOTP"
             required
           />
         </div>
 
         {error && (
-          <div className="bg-red-500/20 border border-red-400/50 rounded-lg p-3">
-            <p className="text-red-200 text-sm text-center">{error}</p>
+          <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+            <p className="text-red-600 text-sm text-center">{error}</p>
           </div>
         )}
 
         <button
           type="submit"
-          className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow-lg transform transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2 focus:ring-offset-transparent"
+          className="w-full bg-gray-800 hover:bg-gray-900 text-white font-medium py-3 px-6 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 cursor-pointer"
         >
           Verificar TOTP
         </button>
 
         <button
           type="button"
-          className="w-full bg-slate-500/80 hover:bg-slate-500 text-white py-3 px-6 rounded-xl transition-colors font-medium backdrop-blur-sm"
+          className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 border border-gray-300 py-3 px-6 rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 cursor-pointer"
           onClick={handleReset}
         >
           Restablecer 2FA

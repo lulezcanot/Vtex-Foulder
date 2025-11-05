@@ -163,47 +163,47 @@ export default Component;`,
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-lg shadow-lg border-b border-white/20">
+      <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">V</span>
               </div>
-              <h1 className="text-xl font-semibold text-white">
-                VTEX FOLDER
+              <h1 className="text-xl font-semibold text-gray-900">
+                Vtex Folder
               </h1>
             </div>
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/components')}
-                className="text-purple-200 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
               >
                 Componentes
               </button>
               <button
                 onClick={() => navigate('/components/add')}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg font-medium text-sm cursor-pointer"
               >
-                Add New
+                Agregar nuevo
               </button>
               
               {/* User Actions */}
-              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-white/20">
-                <span className="text-sm text-white font-medium">
+              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-gray-200">
+                <span className="text-sm text-gray-700 font-medium">
                   Bienvenido {user?.username}
                 </span>
                 <button
                   onClick={handleShowMetrics}
-                  className="text-purple-200 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
                 >
                   Métricas
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500/80 hover:bg-red-500 text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm backdrop-blur-sm"
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium text-sm cursor-pointer"
                 >
                   Cerrar sesión
                 </button>
@@ -215,17 +215,17 @@ export default Component;`,
 
       {/* Main Content */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20">
-          <div className="px-6 py-4 border-b border-white/20">
-            <h2 className="text-xl font-semibold text-white">Agregar Nuevo Componente</h2>
-            <p className="text-purple-200 text-sm mt-1">Crea y guarda tu componente React personalizado</p>
+        <div className="bg-white border border-gray-200 rounded-lg shadow-card">
+          <div className="px-6 py-4 border-b border-gray-200">
+            <h2 className="text-xl font-semibold text-gray-900">Agregar Nuevo Componente</h2>
+            <p className="text-gray-600 text-sm mt-1">Crea y guarda tu componente React personalizado</p>
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 space-y-6">
             {/* Basic Info */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-white mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Nombre del Componente *
                 </label>
                 <input
@@ -233,24 +233,24 @@ export default Component;`,
                   value={formData.name}
                   onChange={(e) => handleInputChange('name', e.target.value)}
                   placeholder="Ingresa el nombre del componente"
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-white mb-2">
+                <label className="block text-sm font-medium text-gray-700 mb-2">
                   Categoría *
                 </label>
                 <select
                   value={formData.category}
                   onChange={(e) => handleInputChange('category', e.target.value)}
-                  className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+                  className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                   required
                 >
-                  <option value="" className="bg-slate-800 text-white">Selecciona una categoría</option>
+                  <option value="">Selecciona una categoría</option>
                   {categories.map((category) => (
-                    <option key={category._id} value={category._id} className="bg-slate-800 text-white">
+                    <option key={category._id} value={category._id}>
                       {category.name}
                     </option>
                   ))}
@@ -259,7 +259,7 @@ export default Component;`,
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-white mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Descripción *
               </label>
               <textarea
@@ -267,13 +267,13 @@ export default Component;`,
                 onChange={(e) => handleInputChange('description', e.target.value)}
                 placeholder="Describe tu componente"
                 rows={3}
-                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200 resize-none"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-white mb-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Tags (separados por comas)
               </label>
               <input
@@ -281,20 +281,20 @@ export default Component;`,
                 value={formData.tags}
                 onChange={(e) => handleInputChange('tags', e.target.value)}
                 placeholder="react, button, ui, component"
-                className="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent backdrop-blur-sm transition-all duration-200"
+                className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
               />
             </div>
 
             {/* Files Section */}
             <div>
               <div className="flex justify-between items-center mb-4">
-                <label className="block text-sm font-medium text-white">
+                <label className="block text-sm font-medium text-gray-700">
                   Archivos del Componente *
                 </label>
                 <button
                   type="button"
                   onClick={addFile}
-                  className="bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white px-4 py-2 rounded-lg text-sm transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+                  className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg text-sm font-medium cursor-pointer"
                 >
                   + Agregar Archivo
                 </button>
@@ -302,7 +302,7 @@ export default Component;`,
 
               <div className="space-y-4">
                 {formData.files.map((file, index) => (
-                  <div key={index} className="bg-white/5 border border-white/20 rounded-xl p-4 backdrop-blur-sm">
+                  <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
                     <div className="flex items-center justify-between mb-3">
                       <div className="flex items-center space-x-4">
                         <input
@@ -310,15 +310,15 @@ export default Component;`,
                           value={file.filename}
                           onChange={(e) => handleFileChange(index, 'filename', e.target.value)}
                           placeholder="Nombre del archivo"
-                          className="px-3 py-2 bg-white/20 border border-white/30 rounded-lg text-white placeholder-purple-200 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 backdrop-blur-sm"
+                          className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
                         />
                         <select
                           value={file.fileType}
                           onChange={(e) => handleFileChange(index, 'fileType', e.target.value)}
-                          className="px-3 py-2 bg-white/20 border border-white/30 rounded-lg text-white text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 backdrop-blur-sm"
+                          className="px-3 py-2 bg-white border border-gray-300 rounded-lg text-gray-900 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
                         >
                           {fileTypeOptions.map(option => (
-                            <option key={option.value} value={option.value} className="bg-slate-800 text-white">
+                            <option key={option.value} value={option.value}>
                               {option.label}
                             </option>
                           ))}
@@ -329,16 +329,16 @@ export default Component;`,
                             name="mainFile"
                             checked={file.isMain}
                             onChange={() => setMainFile(index)}
-                            className="mr-2 text-purple-500 focus:ring-purple-400"
+                            className="mr-2 text-primary-600 focus:ring-primary-500"
                           />
-                          <span className="text-sm text-white">Archivo principal</span>
+                          <span className="text-sm text-gray-700">Archivo principal</span>
                         </label>
                       </div>
                       {formData.files.length > 1 && (
                         <button
                           type="button"
                           onClick={() => removeFile(index)}
-                          className="text-red-400 hover:text-red-300 text-sm font-medium transition-colors"
+                          className="text-red-600 hover:text-red-700 text-sm font-medium cursor-pointer"
                         >
                           Eliminar
                         </button>
@@ -349,7 +349,7 @@ export default Component;`,
                       onChange={(e) => handleFileChange(index, 'content', e.target.value)}
                       placeholder="Contenido del archivo..."
                       rows={10}
-                      className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent font-mono text-sm backdrop-blur-sm resize-none"
+                      className="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 font-mono text-sm resize-none"
                     />
                   </div>
                 ))}
@@ -357,18 +357,18 @@ export default Component;`,
             </div>
 
             {/* Actions */}
-            <div className="flex justify-end space-x-4 pt-6 border-t border-white/20">
+            <div className="flex justify-end space-x-4 pt-6 border-t border-gray-200">
               <button
                 type="button"
                 onClick={() => navigate('/components')}
-                className="px-6 py-3 border border-white/30 rounded-xl text-white hover:bg-white/10 transition-all duration-200 font-medium backdrop-blur-sm"
+                className="px-6 py-3 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 font-medium cursor-pointer"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-6 py-3 rounded-xl transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-medium disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {loading ? (
                   <div className="flex items-center space-x-2">

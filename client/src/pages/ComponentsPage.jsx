@@ -110,47 +110,47 @@ const ComponentsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-lg shadow-lg border-b border-white/20">
+      <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">V</span>
               </div>
-              <h1 className="text-xl font-semibold text-white">
-                VTEX FOLDER
+              <h1 className="text-xl font-semibold text-gray-900">
+                Vtex Folder
               </h1>
             </div>
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/components')}
-                className="text-purple-200 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
               >
                 Componentes
               </button>
               <button
                 onClick={() => navigate('/components/add')}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg font-medium text-sm cursor-pointer"
               >
-                Add New
+                Agregar nuevo
               </button>
               
               {/* User Actions */}
-              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-white/20">
-                <span className="text-sm text-white font-medium">
+              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-gray-200">
+                <span className="text-sm text-gray-700 font-medium">
                   Bienvenido {user?.username}
                 </span>
                 <button
                   onClick={handleShowMetrics}
-                  className="text-purple-200 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium cursor-pointer"
                 >
                   Métricas
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500/80 hover:bg-red-500 text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm backdrop-blur-sm"
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium text-sm cursor-pointer"
                 >
                   Cerrar sesión
                 </button>
@@ -173,9 +173,9 @@ const ComponentsPage = () => {
 
         {/* Results Header */}
         <div className="flex justify-between items-center mb-6">
-          <div className="text-white">
-            <h2 className="text-2xl font-bold">Componentes</h2>
-            <p className="text-gray-400 mt-1">
+          <div>
+            <h2 className="text-2xl font-semibold text-gray-900">Componentes</h2>
+            <p className="text-gray-600 mt-1">
               {pagination.total} componente{pagination.total !== 1 ? 's' : ''} encontrado{pagination.total !== 1 ? 's' : ''}
             </p>
           </div>
@@ -184,14 +184,14 @@ const ComponentsPage = () => {
         {/* Components Grid */}
         {loading ? (
           <div className="flex justify-center items-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-800"></div>
           </div>
         ) : components.length === 0 ? (
           <div className="text-center py-12">
-            <div className="text-gray-400 text-lg mb-4">No se encontraron componentes</div>
+            <div className="text-gray-600 text-lg mb-4">No se encontraron componentes</div>
             <button
               onClick={() => navigate('/components/add')}
-              className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium"
+              className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg font-medium cursor-pointer"
             >
               Crear tu primer componente
             </button>
@@ -218,10 +218,10 @@ const ComponentsPage = () => {
                 <button
                   key={page}
                   onClick={() => setSearchFilters(prev => ({ ...prev, page }))}
-                  className={`px-3 py-2 rounded-md text-sm font-medium ${
+                  className={`px-3 py-2 rounded-lg text-sm font-medium cursor-pointer ${
                     page === pagination.current
-                      ? 'bg-purple-600 text-white'
-                      : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                      ? 'bg-gray-800 text-white'
+                      : 'bg-white border border-gray-300 text-gray-700 hover:bg-gray-50'
                   }`}
                 >
                   {page}

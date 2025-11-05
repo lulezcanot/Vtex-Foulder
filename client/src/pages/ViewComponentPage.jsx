@@ -95,20 +95,20 @@ const ViewComponentPage = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-800"></div>
       </div>
     );
   }
 
   if (!component) {
     return (
-      <div className="min-h-screen bg-slate-900 flex items-center justify-center">
-        <div className="text-white text-center">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-gray-900 text-center">
           <h2 className="text-2xl font-bold mb-4">Componente no encontrado</h2>
           <button
             onClick={() => navigate('/components')}
-            className="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors"
+            className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-3 rounded-lg transition-colors cursor-pointer"
           >
             Volver a componentes
           </button>
@@ -118,47 +118,47 @@ const ViewComponentPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-indigo-900">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white/10 backdrop-blur-lg shadow-lg border-b border-white/20">
+      <div className="bg-white shadow-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-4">
-              <div className="w-8 h-8 bg-gradient-to-r from-purple-500 to-blue-500 rounded-lg flex items-center justify-center shadow-lg">
+              <div className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">V</span>
               </div>
-              <h1 className="text-xl font-semibold text-white">
-                VTEX Custom Components Portfolio
+              <h1 className="text-xl font-semibold text-gray-900">
+                Vtex Folder
               </h1>
             </div>
             <div className="flex items-center space-x-4">
               <button
                 onClick={() => navigate('/components')}
-                className="text-purple-200 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
               >
                 Componentes
               </button>
               <button
                 onClick={() => navigate('/components/add')}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-4 py-2 rounded-lg transition-all duration-200 font-medium shadow-lg hover:shadow-xl transform hover:scale-105"
+                className="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-lg font-medium text-sm cursor-pointer"
               >
-                Add New
+                Agregar nuevo
               </button>
               
               {/* User Actions */}
-              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-white/20">
-                <span className="text-sm text-white font-medium">
+              <div className="flex items-center space-x-3 ml-6 pl-6 border-l border-gray-200">
+                <span className="text-sm text-gray-700 font-medium">
                   Bienvenido {user?.username}
                 </span>
                 <button
                   onClick={handleShowMetrics}
-                  className="text-purple-200 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-600 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer"
                 >
                   Métricas
                 </button>
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500/80 hover:bg-red-500 text-white px-4 py-2 rounded-lg transition-colors font-medium text-sm backdrop-blur-sm"
+                  className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-medium text-sm cursor-pointer"
                 >
                   Cerrar sesión
                 </button>
@@ -173,62 +173,59 @@ const ViewComponentPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Component Info Sidebar */}
           <div className="lg:col-span-1">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 p-6 sticky top-8">
-              <h3 className="text-lg font-semibold text-white mb-4">Información del Componente</h3>
+            <div className="bg-white border border-gray-200 rounded-lg shadow-card p-6 sticky top-8">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Información del Componente</h3>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-purple-200 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Creado por
                   </label>
-                  <p className="text-sm text-white">{component.createdBy?.username}</p>
+                  <p className="text-sm text-gray-900">{component.createdBy?.username}</p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-purple-200 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Creado el
                   </label>
-                  <p className="text-sm text-white">{formatDate(component.createdAt)}</p>
+                  <p className="text-sm text-gray-900">{formatDate(component.createdAt)}</p>
                 </div>
 
                 {component.updatedAt !== component.createdAt && (
                   <div>
-                    <label className="block text-sm font-medium text-purple-200 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Última edición
                     </label>
-                    <p className="text-sm text-white">{formatDate(component.updatedAt)}</p>
+                    <p className="text-sm text-gray-900">{formatDate(component.updatedAt)}</p>
                   </div>
                 )}
 
                 <div>
-                  <label className="block text-sm font-medium text-purple-200 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Versión
                   </label>
-                  <p className="text-sm text-white">v{component.version}</p>
+                  <p className="text-sm text-gray-900">v{component.version}</p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-purple-200 mb-1">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
                     Categoría
                   </label>
-                  <span 
-                    className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-white"
-                    style={{ backgroundColor: component.category?.color || '#8B5CF6' }}
-                  >
+                  <span className="inline-flex items-center px-3 py-1 rounded-lg text-xs font-medium bg-gray-100 text-gray-800">
                     {component.category?.name || 'Sin categoría'}
                   </span>
                 </div>
 
                 {component.tags && component.tags.length > 0 && (
                   <div>
-                    <label className="block text-sm font-medium text-purple-200 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Tags
                     </label>
-                    <div className="flex flex-wrap gap-1">
+                    <div className="flex flex-wrap gap-2">
                       {component.tags.map((tag, index) => (
                         <span
                           key={index}
-                          className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-white/20 text-white backdrop-blur-sm"
+                          className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-700 border border-gray-200"
                         >
                           {tag}
                         </span>
@@ -237,17 +234,17 @@ const ViewComponentPage = () => {
                   </div>
                 )}
 
-                <div className="pt-4 border-t border-white/20">
+                <div className="pt-4 border-t border-gray-200">
                   <div className="flex space-x-2">
                     <button
                       onClick={() => navigate(`/components/${component._id}/edit`)}
-                      className="flex-1 bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 text-white px-3 py-2 rounded-xl text-sm font-medium transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
+                      className="flex-1 bg-gray-800 hover:bg-gray-900 text-white px-3 py-2 rounded-lg text-sm font-medium transition-colors cursor-pointer"
                     >
                       Editar
                     </button>
                     <button
                       onClick={handleDelete}
-                      className="px-3 py-2 rounded-xl text-sm font-medium text-red-400 hover:text-red-300 hover:bg-red-500/20 transition-all duration-200 border border-red-400/50 backdrop-blur-sm"
+                      className="px-3 py-2 rounded-lg text-sm font-medium text-red-600 hover:bg-red-50 transition-colors border border-red-200 cursor-pointer"
                     >
                       Eliminar
                     </button>
@@ -259,29 +256,29 @@ const ViewComponentPage = () => {
 
           {/* Component Details */}
           <div className="lg:col-span-3">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl shadow-2xl border border-white/20 overflow-hidden">
+            <div className="bg-white border border-gray-200 rounded-lg shadow-card overflow-hidden">
               {/* Header */}
-              <div className="px-6 py-4 border-b border-white/20">
-                <h1 className="text-2xl font-bold text-white">{component.name}</h1>
-                <p className="text-purple-200 mt-2">{component.description}</p>
+              <div className="px-6 py-4 border-b border-gray-200">
+                <h1 className="text-2xl font-bold text-gray-900">{component.name}</h1>
+                <p className="text-gray-600 mt-2">{component.description}</p>
               </div>
 
               {/* File Tabs */}
-              <div className="border-b border-white/20">
+              <div className="border-b border-gray-200">
                 <nav className="flex space-x-8 px-6" aria-label="Tabs">
                   {component.files.map((file, index) => (
                     <button
                       key={index}
                       onClick={() => setActiveFileIndex(index)}
-                      className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors ${
+                      className={`py-4 px-1 border-b-2 font-medium text-sm transition-colors cursor-pointer ${
                         index === activeFileIndex
-                          ? 'border-purple-400 text-purple-300'
-                          : 'border-transparent text-purple-200 hover:text-white hover:border-white/30'
+                          ? 'border-gray-800 text-gray-900'
+                          : 'border-transparent text-gray-600 hover:text-gray-900 hover:border-gray-300'
                       }`}
                     >
                       {file.filename}
                       {file.isMain && (
-                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-purple-500/80 text-white backdrop-blur-sm">
+                        <span className="ml-2 inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-800 text-white">
                           Main
                         </span>
                       )}
@@ -294,17 +291,17 @@ const ViewComponentPage = () => {
               <div className="p-6">
                 <div className="mb-4 flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm font-medium text-white">
+                    <span className="text-sm font-medium text-gray-900">
                       {component.files[activeFileIndex]?.filename}
                     </span>
-                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-white/20 text-white backdrop-blur-sm">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
                       {component.files[activeFileIndex]?.fileType.toUpperCase()}
                     </span>
                   </div>
                 </div>
                 
-                <div className="bg-black/30 backdrop-blur-sm rounded-xl p-4 overflow-x-auto border border-white/10">
-                  <pre className="text-sm text-green-300 whitespace-pre-wrap">
+                <div className="bg-gray-900 rounded-lg p-4 overflow-x-auto border border-gray-200">
+                  <pre className="text-sm text-green-400 whitespace-pre-wrap">
                     <code className={`language-${getFileLanguage(component.files[activeFileIndex]?.fileType)}`}>
                       {component.files[activeFileIndex]?.content}
                     </code>

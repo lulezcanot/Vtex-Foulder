@@ -52,9 +52,9 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-md p-6">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-card p-6">
       {/* Search Input */}
-      <div className="mb-4">
+      <div className="mb-6">
         <div className="relative">
           <input
             type="text"
@@ -62,7 +62,7 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
             value={filters.search}
             onChange={(e) => handleInputChange('search', e.target.value)}
             onKeyPress={handleKeyPress}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 placeholder-gray-400"
           />
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <svg className="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,15 +73,15 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
       </div>
 
       {/* Quick Filters */}
-      <div className="flex flex-wrap gap-4 mb-4">
+      <div className="flex flex-wrap gap-4 mb-6">
         <div className="flex-1 min-w-48">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Categoría
           </label>
           <select
             value={filters.category}
             onChange={(e) => handleInputChange('category', e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
           >
             <option value="">Todas las categorías</option>
             {categories.map((category) => (
@@ -93,7 +93,7 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
         </div>
 
         <div className="flex-1 min-w-48">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
             Ordenar por
           </label>
           <select
@@ -103,7 +103,7 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
               handleInputChange('sortBy', sortBy);
               handleInputChange('sortOrder', sortOrder);
             }}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900"
           >
             <option value="createdAt-desc">Más recientes</option>
             <option value="createdAt-asc">Más antiguos</option>
@@ -118,7 +118,7 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
       <div className="flex items-center justify-between">
         <button
           onClick={() => setShowAdvanced(!showAdvanced)}
-          className="text-purple-600 hover:text-purple-700 text-sm font-medium flex items-center"
+          className="text-gray-600 hover:text-gray-900 text-sm font-medium flex items-center cursor-pointer"
         >
           {showAdvanced ? 'Ocultar filtros avanzados' : 'Mostrar filtros avanzados'}
           <svg 
@@ -134,13 +134,13 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
         <div className="flex space-x-3">
           <button
             onClick={handleClearFilters}
-            className="px-4 py-2 text-gray-600 hover:text-gray-800 text-sm font-medium"
+            className="px-4 py-2 text-gray-600 hover:text-gray-800 text-sm font-medium border border-gray-300 rounded-lg hover:bg-gray-50 cursor-pointer"
           >
             Limpiar filtros
           </button>
           <button
             onClick={handleSearch}
-            className="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors font-medium"
+            className="bg-gray-800 text-white px-6 py-2 rounded-lg hover:bg-gray-900 transition-colors font-medium cursor-pointer"
           >
             Buscar
           </button>
@@ -149,10 +149,10 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
 
       {/* Advanced Filters */}
       {showAdvanced && (
-        <div className="mt-4 pt-4 border-t border-gray-200">
+        <div className="mt-6 pt-6 border-t border-gray-200">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
                 Tags (separados por comas)
               </label>
               <input
@@ -160,12 +160,12 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
                 placeholder="react, button, form..."
                 value={filters.tags}
                 onChange={(e) => handleInputChange('tags', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 placeholder-gray-400"
               />
               {availableTags.length > 0 && (
-                <div className="mt-2">
-                  <div className="text-xs text-gray-500 mb-1">Tags disponibles:</div>
-                  <div className="flex flex-wrap gap-1">
+                <div className="mt-3">
+                  <div className="text-xs font-medium text-gray-500 mb-2">Tags disponibles:</div>
+                  <div className="flex flex-wrap gap-2">
                     {availableTags.slice(0, 10).map((tag, index) => (
                       <button
                         key={index}
@@ -176,7 +176,7 @@ const SearchBar = ({ categories, onSearch, initialFilters }) => {
                             handleInputChange('tags', newTags);
                           }
                         }}
-                        className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-100 text-gray-800 hover:bg-gray-200 transition-colors"
+                        className="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-700 hover:bg-gray-100 transition-colors border border-gray-200 cursor-pointer"
                       >
                         {tag}
                       </button>
